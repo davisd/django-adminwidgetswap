@@ -1,0 +1,44 @@
+django-adminwidgetswap
+===============
+adminwidgetswap is used for dynamically swapping out widgets from django's generated admin.
+
+This allows applications to be packaged generically without the need for WYSIWYG dependencies editors- giving the application consumer the freedom to chose admin widgets without modifying original app source.
+
+Author
+======
+[David Davis](http://www.davisd.com)
+(http://www.davisd.com)
+[dynamically change django admin widets at runtime (django-adminwidgetswap) blog post](http://www.davisd.com/blog/2010/04/17/dynamically-change-django-admin-widgets-at-runtime/)
+
+Usage
+===============
+To change a widget in django's admin, just put adminwidgetswap.py on the python path, import adminwidgetswap.py and use:
+
+    adminwidgetswap.swap_model_field(model, field, widget)
+
+...to change a widget for a direct model admin's field
+
+or
+  
+    adminwidgetswap.swap_model_inline_field(model, field, widget)
+
+...to change widgets for inlines of a specific model and field
+
+or
+
+    adminwidgetswap.swap_model_and_inline_fields(model, field, widget)
+
+...to change both the widget for the direct model admin's field as well as all inline usages for the model and field
+
+I usually have a project-level application called website, and I put this initialization code inside the website app's __init__.py
+
+Usage - parameters
+===============
+model is the Model class
+(eg. models.GalleryImage)
+
+field is the field name you're looking to swap
+(eg. 'image')
+
+widget is the widget you're going to swap for
+(eg. widgetlibrary.ThumbnailWidget())
