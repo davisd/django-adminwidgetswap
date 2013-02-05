@@ -1,5 +1,4 @@
 # django-adminwidgetswap by DavisD (David Davis) www.davisd.com
-# v2.1, now with functionality and a BSD license!
 
 from django.contrib import admin
 
